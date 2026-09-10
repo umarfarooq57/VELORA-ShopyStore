@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { StoreProvider, useStore } from './context/StoreContext';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
@@ -101,3 +102,16 @@ export default function App() {
     </StoreProvider>
   );
 }
+
+// Ensure the application mounts cleanly when loaded directly as the entry point
+if (typeof document !== 'undefined') {
+  const rootElement = document.getElementById('root');
+  if (rootElement && !rootElement.hasChildNodes()) {
+    createRoot(rootElement).render(
+      <StrictMode>
+        <App />
+      </StrictMode>
+    );
+  }
+}
+
