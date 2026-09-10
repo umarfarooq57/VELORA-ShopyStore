@@ -1,0 +1,6 @@
+{
+  "name": "Velora",
+  "description": "A world-class modern eCommerce store featuring luxury curated collections, lightning checkout, real-time order tracking, multi-currency, and an integrated admin CRM.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
