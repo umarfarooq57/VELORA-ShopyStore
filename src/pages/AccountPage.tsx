@@ -154,8 +154,8 @@ export const AccountPage: React.FC = () => {
                     </div>
 
                     <div className="divide-y divide-stone-100 dark:divide-stone-800">
-                      {ord.items.map((it) => (
-                        <div key={it.id} className="py-2 flex items-center justify-between text-xs">
+                      {ord.items.map((it, idx) => (
+                        <div key={`${ord.id}-${it.productId || it.title}-${idx}`} className="py-2 flex items-center justify-between text-xs">
                           <div className="flex items-center gap-3">
                             <img
                               src={it.image}

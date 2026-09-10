@@ -113,6 +113,7 @@ export interface Coupon {
 }
 
 export interface OrderItem {
+  id?: string;
   productId: string;
   title: string;
   price: number;

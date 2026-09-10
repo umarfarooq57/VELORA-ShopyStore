@@ -14,13 +14,22 @@ export const PersonalizedRecs: React.FC = () => {
     { id: 'tech', label: 'Computational Creator', tag: 'Performance' },
   ];
 
-  const filteredRecs = products
-    .filter((p) => {
-      const active = personas.find((p) => p.id === selectedPersona);
-      return p.tags.some((t) => t.toLowerCase().includes(active?.tag.toLowerCase() || ''));
-    })
-    .concat(products.slice(0, 4))
-    .slice(0, 4);
+  const activePersona = personas.find((p) => p.id === selectedPersona);
+  const matched = products.filter((p) =>
+    p.tags.some((t) => t.toLowerCase().includes(activePersona?.tag.toLowerCase() || ''))
+  );
+
+  // Guarantee uniqueness and fill up to 4 recommendations
+  const filteredRecs: typeof products = [];
+  const seenIds = new Set<string>();
+
+  for (const p of [...matched, ...products]) {
+    if (!seenIds.has(p.id)) {
+      seenIds.add(p.id);
+      filteredRecs.push(p);
+      if (filteredRecs.length === 4) break;
+    }
+  }
 
   return (
     <section className="py-16 sm:py-20 bg-stone-900 text-white rounded-3xl mx-4 sm:mx-6 lg:mx-8 my-8 px-6 sm:px-12 border border-stone-800 shadow-2xl relative overflow-hidden">

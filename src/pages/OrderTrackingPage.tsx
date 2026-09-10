@@ -171,8 +171,8 @@ export const OrderTrackingPage: React.FC = () => {
               </div>
 
               <div className="space-y-3 max-h-64 overflow-y-auto">
-                {currentOrder.items.map((item) => (
-                  <div key={item.id} className="flex gap-3 items-center text-xs">
+                {currentOrder.items.map((item, idx) => (
+                  <div key={`${currentOrder.id}-${item.productId || item.title}-${idx}`} className="flex gap-3 items-center text-xs">
                     <img
                       src={item.image}
                       alt=""

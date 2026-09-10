@@ -485,7 +485,7 @@ export const ProductDetailPage: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-6">
             {/* Visual Products Row */}
             <div className="flex flex-wrap items-center gap-3">
-              {[product, ...bundleProducts].map((item, idx) => {
+              {[product, ...bundleProducts.filter((p) => p.id !== product.id)].map((item, idx) => {
                 const isChecked = selectedBundleIds.includes(item.id);
                 return (
                   <React.Fragment key={item.id}>
